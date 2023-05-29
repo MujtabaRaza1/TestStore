@@ -831,6 +831,18 @@ class VariantSelects extends HTMLElement {
 
   updateOptions() {
     this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
+    console.log(this.options);
+    
+    var input = document.querySelector('input[name="Color"]');
+    var value = input.value;
+
+    // Output the value
+    console.log(value);
+
+
+
+    this.options.push(value);
+    
   }
 
   updateMasterId() {
@@ -898,7 +910,7 @@ class VariantSelects extends HTMLElement {
 
   updatePickupAvailability() {
     const pickUpAvailability = document.querySelector('pickup-availability');
-    console.log(pickUpAvailability,'dsdsd')
+    console.log(pickUpAvailability,'available MFO')
     if (!pickUpAvailability) return;
 
     if (this.currentVariant && this.currentVariant.available) {

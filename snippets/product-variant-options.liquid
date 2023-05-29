@@ -44,8 +44,7 @@
       endcase
     endfor
   -%}
-
-  {%- if block.settings.picker_type == 'button' -%}
+    {% if option.name == 'Color' %}
     <input
       type="radio"
       id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
@@ -59,11 +58,14 @@
         class="disabled"
       {% endif %}
     >
-    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-      {{ value -}}
-      <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
-    </label>
-  {%- elsif block.settings.picker_type == 'dropdown' -%}
+        <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" style="background-color: {{ product.variants[forloop.index0].metafields.color.value }}">
+          <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+        </label>
+
+  {% endif %}
+
+    {% if option.name == 'Size' %}
+
     <option
       value="{{ value | escape }}"
       {% if option.selected_value == value %}
@@ -76,5 +78,6 @@
         {{- value -}}
       {%- endif %}
     </option>
-  {%- endif -%}
+  {% endif %}
+
 {%- endfor -%}
