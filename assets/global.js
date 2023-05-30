@@ -830,18 +830,18 @@ class VariantSelects extends HTMLElement {
   }
 
   updateOptions() {
-    this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
-    console.log(this.options);
     
-    var input = document.querySelector('input[name="Color"]');
+    // console.log(this.options);
+    if (document.querySelector('input[name="Color"]:checked') !== null){
+    var input = document.querySelector('input[name="Color"]:checked');
+    this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
     var value = input.value;
-
-    // Output the value
-    console.log(value);
-
-
-
+    // console.log(value);
     this.options.push(value);
+}else{
+  this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
+}
+    
     
   }
 
@@ -1032,6 +1032,12 @@ class VariantRadios extends VariantSelects {
     this.options = fieldsets.map((fieldset) => {
       return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
     });
+    var select = document.getElementById("Option-template--19099332968732__main-0");
+    var value = select.value;
+
+    console.log(value);
+
+    fieldsets.push(value);
   }
 }
 
