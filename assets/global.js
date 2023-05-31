@@ -898,6 +898,7 @@ class VariantSelects extends HTMLElement {
     });
   }
 
+ 
   setInputAvailability(listOfOptions, listOfAvailableOptions) {
     listOfOptions.forEach(input => {
       if (listOfAvailableOptions.includes(input.getAttribute('value'))) {

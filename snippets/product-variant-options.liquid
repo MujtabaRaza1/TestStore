@@ -52,7 +52,7 @@
       value="{{ value | escape }}"
       form="{{ product_form_id }}"
       {% if input.selected_value == value %}
-        checked
+        checked, selected
       {% endif %}
       {% if option_disabled %}
         class="disabled"
